@@ -7,7 +7,6 @@ function main() {
   drawTileMap(level.tilemap);
 }
 
-
 function Level() {
   this.tilemap = `
 0000000000000000000000000000000000
