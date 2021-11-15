@@ -1,4 +1,18 @@
-#ground {
-  border-top: 10px solid rgb(17, 102, 0);
+.tile {
+  position: absolute;
+  box-sizing: border-box;
+}
+.tile.air {
+  /* no style */
+}
+.tile.ground {
+  border-top: 20px solid rgb(17, 102, 0);
   background-color: rgb(102, 68, 0);
+}
+.tile.box {
+  border: 2px solid black;
+  background-color: rgb(97, 97, 97);
+}
+.tile.endpoint {
+  background-color: gold;
 }
