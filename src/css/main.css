@@ -13,6 +13,13 @@
   border: 2px solid black;
   background-color: rgb(97, 97, 97);
 }
+.tile.startpoint {
+  border: 10px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50px 50px 0px 0px;
+  background-color: aquamarine;
+}
 .tile.endpoint {
+  border: 10px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50px 50px 0px 0px;
   background-color: gold;
 }

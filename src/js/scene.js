@@ -6,7 +6,7 @@ const tileMapKey = {
   4: "",
   5: "",
   7: "",
-  8: "",
+  8: "startpoint",
   9: "endpoint"
 };
 
