@@ -1,35 +1,37 @@
 // store all keys currently pressed
-let keysPressed {};
+let keysPressed = {};
 
 addEventListener("keydown", (e) => {
-  keysDown[e.keyCode] = true;
+  keysPressed[e.keyCode] = true;
 });
 
 addEventListener("keyup", (e) => {
-  delete keysDown[e.keyCode];
+  delete keysPressed[e.keyCode];
 });
 
 // https://keycode.info
 function input() {
   // A or left arrow
-  if (65 in keysDown || 37 in keysDown) {
+  if (65 in keysPressed || 37 in keysPressed) {
     player.x -= 5;
   }
   // W or up arrow
-  if (87 in keysDown || 38 in keysDown) {
-    player.y += 5;
+  if (87 in keysPressed || 38 in keysPressed) {
+    player.y -= 5;
   }
   // D or right arrow
-  if (68 in keysDown || 39 in keysDown) {
+  if (68 in keysPressed || 39 in keysPressed) {
     player.x += 5;
+    console.log(player);
   }
   // S or down arrow
-  if (83 in keysDown || 40 in keysDown) {
-    player.y -= 5;
+  if (83 in keysPressed || 40 in keysPressed) {
+    player.y += 5;
     // FIXME: velocity downwards
   }
   // Q
-  if (81 in keysDown) {
+  if (81 in keysPressed) {
+    console.log("Q")
     // FIXME: quit
   }
 }

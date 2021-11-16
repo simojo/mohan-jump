@@ -1,3 +1,6 @@
+#sprite {
+  position: absolute;
+}
 .tile {
   position: absolute;
   box-sizing: border-box;

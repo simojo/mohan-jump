@@ -35,3 +35,17 @@ function drawTileMap(tilemap) {
     currentX = 0;
   });
 }
+
+function drawPlayer(player) {
+  let sprite = document.getElementById("sprite");
+  if (sprite === null || sprite === undefined) {
+    sprite = document.createElement("img");
+    sprite.src = "./imgs/player.png";
+    sprite.id = "sprite";
+    sprite.style.width = "200px";
+    sprite.style.height = "100px";
+    document.body.appendChild(sprite);
+  }
+  sprite.style.left = `${player.x}px`;
+  sprite.style.top = `${player.y}px`;
+}
