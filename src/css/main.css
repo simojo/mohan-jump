@@ -2,13 +2,15 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  padding: 0 20em 0 20em;
 }
 #title-screen > h1 {
   font-size: 70px;
   font-family: serif;
   left: 50%;
   position: relative;
-  transform: translateX(50%);
+  transform: translateX(-50%);
   width: 100%;
 }
 .level-select {

@@ -7,9 +7,11 @@ addEventListener("keydown", (e) => {
 
 addEventListener("keyup", (e) => {
   delete keysPressed[e.keyCode];
+  // jump button released, do not allow double jumps by exceeding jump ticks
+  if ([87, 38, 32].includes(e.keyCode)) {
+    jumpTicks = 100;
+  }
 });
-
-let velocityCap = 7;
 
 // https://keycode.info
 function input() {
