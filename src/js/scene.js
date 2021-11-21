@@ -36,6 +36,7 @@ function createLevelTileCoords(tilemap) {
 }
 
 // draws the entire level tiles using the tilemap
+// FIXME: 2d canvas
 function drawTileMap(tilemap) {
   // clear the screen of any elements
   document.body.innerHTML = "";
