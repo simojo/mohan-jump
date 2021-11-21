@@ -1,3 +1,33 @@
+#title-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#title-screen > h1 {
+  font-size: 70px;
+  font-family: serif;
+  left: 50%;
+  position: relative;
+  transform: translateX(50%);
+  width: 100%;
+}
+.level-select {
+  width: 1.3em;
+  height: 1.3em;
+  padding: 0.3em;
+  font-size: 40px;
+  margin: 0.6em;
+  background-color: #000000;
+  display: inline-block;
+  color: #ffffff;
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+}
+.level-select:hover {
+  cursor: pointer;
+  background-color: #cccccc;
+}
 #sprite {
   position: absolute;
 }
