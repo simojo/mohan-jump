@@ -126,7 +126,23 @@ let levels = [
 00000000000000000000020000222002222222
 `,
     name: "4"
+  },
+  {
+    tilemap: `
+11111111111111111111111111111111111111
+10000000000000100000000000000000000001
+10800000000000100000000000000000000001
+11111111100000100000000000000000000000
+10000000000000100000000000000001100000
+10000000000000100000000000000000100000
+10000000111111100000000000000100100090
+10000000000000000000000000100000111111
+10000000000000000000001000000000000000
+11111111110001111111000000000000000000
+`,
+    name: "5"
   }
+
 ];
 
 let level = undefined;
@@ -156,8 +172,8 @@ function makeTitleScreen() {
     levelElement.classList.add("level-select");
     levelElement.onclick = () => {
       level = JSON.parse(JSON.stringify(thisLevel)); // deep copy
-      drawTileMap(level.tilemap);
       levelTileCoords = createLevelTileCoords(level.tilemap);
+      drawTileMap(level.tilemap);
       eventLoop();
     };
     levelElement.innerHTML = thisLevel.name;

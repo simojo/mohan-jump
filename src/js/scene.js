@@ -59,34 +59,26 @@ function drawTileMap(tilemap) {
   canvas.style.position = "absolute";
   canvas.style.top = "0px";
   canvas.style.left = "0px";
-  canvas.style.width = "100%";
+  // get height of tiles
+  canvas.width = tilemap.split("\n")[1].split("").length * tileSideLength;
+  canvas.height = tilemap.split("\n").length * tileSideLength;
   let context = canvas.getContext("2d");
   document.body.appendChild(canvas);
 
-  // load in all of the images into an array for easy drawing
-  let images = Object.keys(tileMapKey).reduce((acc, tileID) => {
-    if (["", "air"].includes(tileMapKey[tileID]) === false) {
-      let tileImg = new Image();
-      tileImg.src = `./imgs/${tileMapKey[tileID]}.png`;
-      acc[tileID] = tileImg;
-      tileImg.onload = () => { console.log(`image [${tileID}] loaded`); }
-    }
-    return acc;
-  }, {});
-
-  // FIXME: temporary unless above method definitely does not work
   // secretly load in all of the images beforehand
   let imageEnvelope = document.createElement("div");
   imageEnvelope.style.display = "none";
   document.body.appendChild(imageEnvelope);
-  Object.keys(tileMapKey).forEach(tileID => {
-    if (["", "air"].includes(tileMapKey[tileID]) === false) {
+  Object.keys(tileMapKey)
+    .filter(tileID => ["", "air"].includes(tileMapKey[tileID]) === false)
+    .forEach(tileID => {
       let tileImg = document.createElement("img");
       tileImg.src = `./imgs/${tileMapKey[tileID]}.png`;
-      tileImg.onload = () => { console.log(`image [${tileID}] loaded`); }
+      tileImg.addEventListener("load", () => {
+        console.log(`image [${tileID}] loaded`);
+      });
       tileImg.id = tileMapKey[tileID];
       imageEnvelope.appendChild(tileImg);
-    }
   });
 
   let currentX = 0;
@@ -96,26 +88,35 @@ function drawTileMap(tilemap) {
     // iterate through all characters of tilemap line and create the corresponding tile
     line.split("").forEach((tileID) => {
       // handle different tile sizes differently, defaulting to square
-      // FIXME: these are not drawing!!!!
+      // closures are necessary to capture current x and y values with a dynamic scoping
+      let thisImage = document.getElementById(tileMapKey[tileID]);
       switch(tileMapKey[tileID]) {
         case "":
+          // nonexistent block; draw nothing
           break;
         case "air":
+          // air block; draw nothing
           break;
         case "startpoint":
-          images[tileID].addEventListener("load", () => {
-            context.drawImage(images[tileID], currentX, currentY - tileSideLength, tileSideLength, 2 * tileSideLength);
-          });
+          (function (thisImage, currentX, currentY) {
+            thisImage.addEventListener("load", () => {
+              context.drawImage(thisImage, currentX, currentY - tileSideLength, tileSideLength, 2 * tileSideLength);
+            });
+          }(thisImage, currentX, currentY));
           break;
         case "endpoint":
-          images[tileID].addEventListener("load", () => {
-            context.drawImage(images[tileID], currentX, currentY - tileSideLength, tileSideLength, 2 * tileSideLength);
-          });
+          (function (thisImage, currentX, currentY) {
+            thisImage.addEventListener("load", () => {
+              context.drawImage(thisImage, currentX, currentY - tileSideLength, tileSideLength, 2 * tileSideLength);
+            });
+          }(thisImage, currentX, currentY));
           break;
         default:
-          images[tileID].addEventListener("load", () => {
-            context.drawImage(images[tileID], currentX, currentY, tileSideLength, tileSideLength);
-          });
+          (function (thisImage, currentX, currentY) {
+            thisImage.addEventListener("load", () => {
+              context.drawImage(thisImage, currentX, currentY, tileSideLength, tileSideLength);
+            });
+          }(thisImage, currentX, currentY));
           break;
       }
       currentX += tileSideLength;
