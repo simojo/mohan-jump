@@ -40,18 +40,27 @@ function drawTileMap(tilemap) {
   // clear the screen of any elements
   document.body.innerHTML = "";
 
+  let container = document.createElement("div");
+  container.id = "container";
+  container.style.position = "absolute";
+  container.style.height = "100%";
+  container.style.width = "100%";
+  container.style.top = "0px";
+  container.style.left = "0px";
+  container.style.padding = "0px";
+  container.style.margin = "0px";
+  document.body.appendChild(container);
+
   // create the background
-  let background = new Image();
+  let background = document.createElement("img");
   background.src = "./imgs/background.png";
-  let backCanvas = document.createElement("canvas");
-  backCanvas.id = "back-canvas";
-  backCanvas.style.position = "absolute";
-  backCanvas.style.top = "0px";
-  backCanvas.style.left = "0px";
-  backCanvas.style.width = "100%";
-  let backgroundContext = backCanvas.getContext("2d")
-  background.onload = () => { backgroundContext.drawImage(background, 0, 0); }
-  document.body.appendChild(backCanvas);
+  background.id = "background";
+  background.style.position = "absolute";
+  background.style.top = "0px";
+  background.style.left = "0px";
+  background.style.height = "100%";
+  background.style.width = "100%";
+  container.appendChild(background);
 
   // create the foreground
   let canvas = document.createElement("canvas");
@@ -59,11 +68,19 @@ function drawTileMap(tilemap) {
   canvas.style.position = "absolute";
   canvas.style.top = "0px";
   canvas.style.left = "0px";
-  // get height of tiles
-  canvas.width = tilemap.split("\n")[1].split("").length * tileSideLength;
-  canvas.height = tilemap.split("\n").length * tileSideLength;
+  // get size of tilemap
+  let canvasWidth = tilemap.split("\n")[1].split("").length * tileSideLength;
+  let canvasHeight = tilemap.split("\n").length * tileSideLength;
+  // set sizing props for pixel scaling
+  canvas.width = canvasWidth;
+  canvas.height = canvasHeight;
+  // set sizing props for overflow styling
+  canvas.style.width = `${canvasWidth}px`;
+  canvas.style.height = `${canvasHeight}px`;
+  canvas.style.overflow = "hidden";
+  // get drawing context
   let context = canvas.getContext("2d");
-  document.body.appendChild(canvas);
+  container.appendChild(canvas);
 
   // secretly load in all of the images beforehand
   let imageEnvelope = document.createElement("div");
@@ -129,16 +146,24 @@ function drawTileMap(tilemap) {
 let playerWidth = tileSideLength - 10;
 let playerHeight = 2 * playerWidth;
 
+// aligns the view of the level based upon where the player is
+function alignView(player) {
+  let canvas = document.getElementById("canvas");
+
+}
+
+// draws the player
 function drawPlayer(player) {
   let sprite = document.getElementById("sprite");
   // create a sprite if it does not exist
   if (sprite === null || sprite === undefined) {
     sprite = document.createElement("img");
+    sprite.style.position = "absolute";
     sprite.src = "./imgs/player.png";
     sprite.id = "sprite";
     sprite.style.width = `${playerWidth}px`;
     sprite.style.height = `${playerHeight}px`;
-    document.body.appendChild(sprite);
+    document.getElementById("container").appendChild(sprite);
 
     // place sprite in start point location
     let startPoint = levelTileCoords.filter(tileCoord => tileCoord.id === 8)[0];
