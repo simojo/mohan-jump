@@ -149,7 +149,6 @@ let playerHeight = 2 * playerWidth;
 // aligns the view of the level based upon where the player is
 function alignView(player) {
   let canvas = document.getElementById("canvas");
-
 }
 
 // draws the player
