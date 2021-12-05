@@ -40,6 +40,17 @@ function drawTileMap(tilemap) {
   // clear the screen of any elements
   document.body.innerHTML = "";
 
+  // create the background
+  let background = document.createElement("img");
+  background.src = "./imgs/background.png";
+  background.id = "background";
+  background.style.position = "absolute";
+  background.style.top = "0px";
+  background.style.left = "0px";
+  background.style.height = "100%";
+  background.style.width = "100%";
+  document.body.appendChild(background);
+
   let container = document.createElement("div");
   container.id = "container";
   container.style.position = "absolute";
@@ -50,17 +61,6 @@ function drawTileMap(tilemap) {
   container.style.padding = "0px";
   container.style.margin = "0px";
   document.body.appendChild(container);
-
-  // create the background
-  let background = document.createElement("img");
-  background.src = "./imgs/background.png";
-  background.id = "background";
-  background.style.position = "absolute";
-  background.style.top = "0px";
-  background.style.left = "0px";
-  background.style.height = "100%";
-  background.style.width = "100%";
-  container.appendChild(background);
 
   // create the foreground
   let canvas = document.createElement("canvas");
@@ -145,11 +145,6 @@ function drawTileMap(tilemap) {
 
 let playerWidth = tileSideLength - 10;
 let playerHeight = 2 * playerWidth;
-
-// aligns the view of the level based upon where the player is
-function alignView(player) {
-  let canvas = document.getElementById("canvas");
-}
 
 // draws the player
 function drawPlayer(player) {
