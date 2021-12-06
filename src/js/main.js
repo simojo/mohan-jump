@@ -192,6 +192,7 @@ function eventLoop() {
 let velocityCap = 7;
 let jumpTicks = 0; // counts how many cycles the jump button has been pressed; helps prevents double jumps
 
+// FIXME: checking for when the player reaches the end or goes out of the level
 function playerMechanics() {
   // Increment the position based upon velocity
   let playerBottom = player.y + playerHeight;
