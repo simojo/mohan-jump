@@ -10,5 +10,5 @@
 
 #### Playing the game
 
-* Use `UP`, `DOWN` `LEFT` `RIGHT`, `SPACE`, or `W` `A` `S` `D` to move the player around.
+* Use `UP`/`DOWN`/`LEFT`/`RIGHT`, `SPACE`, or `W` `A` `S` `D` to move the player around.
 * **Reach the door at the end of the level to win!**
