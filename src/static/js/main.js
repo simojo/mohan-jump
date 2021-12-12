@@ -206,8 +206,8 @@ function popup(text, transition) {
   overlay.style.left = "0px";
   overlay.style.position = "absolute";
   overlay.style.color = "white";
+  // NOTE: doesn't work; don't really care though
   overlay.style.transition = `opacity ${transition}s`;
-  overlay.style.transition = "opacity 1s";
   overlay.style.opacity = 0.0;
   let textElement = document.createElement("h1");
   textElement.style.left = "50%";
@@ -226,11 +226,26 @@ function popup(text, transition) {
   }, 500);
 }
 
-// FIXME: checking for when the player reaches the end or goes out of the level
 function playerMechanics() {
   // Increment the position based upon velocity
   let playerBottom = player.y + playerHeight;
   let playerRight = player.x + playerWidth;
+
+  // check for player falling out of map
+  if (playerBottom > level.tilemap.split("\n").length * tileSideLength + tileSideLength) {
+    popup(["YOU DIED", "R.I.P", "You lost!!", "Better luck next time >:)"][Math.floor(Math.random() * 4)], 2);
+    setTimeout(() => {
+      makeTitleScreen();
+    }, 1000);
+  }
+
+  let endpointBlock = levelTileCoords.filter(tileCoord => tileCoord.id === 9)[0];
+  if (player.x >= endpointBlock.x && playerRight <= endpointBlock.x + tileSideLength && player.y >= endpointBlock.y - tileSideLength && player.y <= endpointBlock.y + tileSideLength) {
+    popup("Level Complete!!", 2);
+    setTimeout(() => {
+      makeTitleScreen();
+    }, 500);
+  }
 
   if (
     !(// ensure no collision on the left side
