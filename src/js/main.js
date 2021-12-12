@@ -192,6 +192,40 @@ function eventLoop() {
 let velocityCap = 7;
 let jumpTicks = 0; // counts how many cycles the jump button has been pressed; helps prevents double jumps
 
+function popup(text, transition) {
+  if (document.getElementById("popup") !== null) {
+    return;
+  }
+  let overlay = document.createElement("div");
+  overlay.id = "popup";
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.zIndex = 2;
+  overlay.style.backgroundColor = "black";
+  overlay.style.top = "0px";
+  overlay.style.left = "0px";
+  overlay.style.position = "absolute";
+  overlay.style.color = "white";
+  overlay.style.transition = `opacity ${transition}s`;
+  overlay.style.transition = "opacity 1s";
+  overlay.style.opacity = 0.0;
+  let textElement = document.createElement("h1");
+  textElement.style.left = "50%";
+  textElement.style.top = "50%";
+  textElement.style.fontSize = "100px";
+  textElement.style.position = "absolute";
+  textElement.style.transform = "translate(-50%, -100%)";
+  textElement.innerHTML = text;
+  overlay.appendChild(textElement);
+  document.body.appendChild(overlay);
+  overlay.style.opacity = 1.0;
+  setTimeout(() => {
+    let el = document.getElementById("popup");
+    el.style.opacity = 0.0;
+    el.remove();
+  }, 500);
+}
+
 // FIXME: checking for when the player reaches the end or goes out of the level
 function playerMechanics() {
   // Increment the position based upon velocity

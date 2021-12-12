@@ -19,4 +19,10 @@ function input() {
   if (81 in keysPressed) {
     makeTitleScreen();
   }
+  // R
+  if (82 in keysPressed) {
+    document.getElementById("sprite").remove();
+    player = JSON.parse(JSON.stringify(playerTemplate));
+    popup("Restarting...", 1);
+  }
 }
