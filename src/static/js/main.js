@@ -161,10 +161,26 @@ function makeTitleScreen() {
   // create the title screen itself
   let titleScreen = document.createElement("div");
   titleScreen.id = "title-screen";
+  titleScreen.style.position = "absolute";
+  titleScreen.style.top = "0px";
+  titleScreen.style.left = "0px";
+  titleScreen.style.width = "100%";
+  titleScreen.style.height = "100%";
   let title = document.createElement("h1");
+  title.style.position = "absolute";
+  title.style.top = "20%";
+  title.style.left = "50%";
+  title.style.transform = "translate(-50%, -100%)";
   title.innerHTML = "Mohan Jump";
   titleScreen.appendChild(title);
   document.body.appendChild(titleScreen);
+
+  let levelHolder = document.createElement("div");
+  levelHolder.style.position = "absolute";
+  levelHolder.style.top = "40%";
+  levelHolder.style.left = "50%";
+  levelHolder.style.transform = "translate(-50%, -100%)";
+  titleScreen.appendChild(levelHolder);
 
   // add the level selectors
   levels.forEach((thisLevel) => {
@@ -177,7 +193,7 @@ function makeTitleScreen() {
       eventLoop();
     };
     levelElement.innerHTML = thisLevel.name;
-    titleScreen.appendChild(levelElement);
+    levelHolder.appendChild(levelElement);
   });
 }
 

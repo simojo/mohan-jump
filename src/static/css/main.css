@@ -2,19 +2,10 @@ body {
   overflow: hidden;
 }
 #title-screen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0 20em 0 20em;
 }
 #title-screen > h1 {
   font-size: 70px;
   font-family: serif;
-  left: 50%;
-  position: relative;
-  transform: translateX(-50%);
-  width: 100%;
 }
 .level-select {
   width: 1.3em;
@@ -35,29 +26,4 @@ body {
 }
 #sprite {
   position: absolute;
-}
-.tile {
-  position: absolute;
-  box-sizing: border-box;
-}
-.tile.air {
-  /* no style */
-}
-.tile.ground {
-  border-top: 20px solid rgb(17, 102, 0);
-  background-color: rgb(102, 68, 0);
-}
-.tile.box {
-  border: 2px solid black;
-  background-color: rgb(97, 97, 97);
-}
-.tile.startpoint {
-  border: 10px solid rgba(0, 0, 0, 0.2);
-  border-radius: 50px 50px 0px 0px;
-  background-color: aquamarine;
-}
-.tile.endpoint {
-  border: 10px solid rgba(0, 0, 0, 0.2);
-  border-radius: 50px 50px 0px 0px;
-  background-color: gold;
 }
