@@ -8,17 +8,17 @@ def main():
     return render_template('main.html')
 
 # handling asset requests
-@app.route('/css/<path:path>', methods=['GET'])
+@app.route('/css/<path:path>')
 def send_css(path):
-    return send_from_directory('css', path)
+    return send_from_directory('static/css', path)
 
-@app.route('/js/<path:path>', methods=['GET'])
+@app.route('/js/<path:path>')
 def send_js(path):
-    return send_from_directory('js', path)
+    return send_from_directory('static/js', path)
 
-@app.route('/imgs/<path:path>', methods=['GET'])
+@app.route('/imgs/<path:path>')
 def send_imgs(path):
-    return send_from_directory('imgs', path)
+    return send_from_directory('static/imgs', path)
 
 if __name__ == '__main__':
     app.run()
