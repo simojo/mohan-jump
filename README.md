@@ -1,6 +1,6 @@
-# CMPSC201 Fall 2021 Final Project
+# Mohan Jump
 
-### Mohan Jump
+A simple platformer in vanilla JS.
 
 #### Running Mohan Jump
 
