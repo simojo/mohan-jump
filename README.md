@@ -4,9 +4,7 @@
 
 #### Running Mohan Jump
 
-* Ensure you have the python module `flask` installed.
-* Run `python3 src/app.py` to start the static web server.
-* Navigate to `http://localhost:5000` in your browser to play the game!
+In a browser, open `file://<path-to-src/main.html>`.
 
 #### Playing the game
 

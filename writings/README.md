@@ -1,2 +1,0 @@
-# CMPSC201Fall2021FinalProject
-Writings
