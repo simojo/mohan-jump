@@ -2,6 +2,8 @@
 
 A simple platformer in vanilla JS.
 
+![Screenshot](./imgs/screenshot.png)
+
 #### Running Mohan Jump
 
 In a browser, open `file://<path-to-src/main.html>`.
